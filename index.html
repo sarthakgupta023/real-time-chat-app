@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chat-app</title>
+    <title>WhatsApp Chat Clone</title>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
 </head>
@@ -17,15 +17,14 @@
         flex-direction: column;
         min-height: 100vh;
         margin: 0;
-        background-color: #f7f9fc;
-        color: #333;
+        background-color: #ece5dd;
     }
 
     /* Container for messages */
     #message-container {
         width: 100%;
         max-width: 500px;
-        height: 400px;
+        height: 500px;
         margin-bottom: 20px;
         padding: 10px;
         overflow-y: auto;
@@ -42,57 +41,90 @@
         max-width: 500px;
         display: flex;
         gap: 10px;
+        padding: 10px;
+        background-color: #ffffff;
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid #e0e0e0;
+        position: fixed;
+        bottom: 0;
     }
 
     #message-input {
         flex: 1;
-        padding: 12px;
-        border: 1px solid #dcdcdc;
-        border-radius: 8px;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
         font-size: 16px;
-        box-sizing: border-box;
-        background-color: #f2f4f8;
+        background-color: #f0f0f0;
+        outline: none;
     }
 
     #send-button {
         padding: 10px 16px;
-        background-color: #4a90e2;
+        background-color: #25d366;
         color: #ffffff;
         border: none;
-        border-radius: 8px;
+        border-radius: 50%;
         cursor: pointer;
         font-size: 16px;
         transition: background-color 0.3s;
     }
 
     #send-button:hover {
-        background-color: #357abd;
+        background-color: #20b954;
     }
 
     /* Styling individual messages */
     .message {
         padding: 8px 12px;
         margin: 4px 0;
-        border-radius: 6px;
-        background-color: #e8f4ff;
-        align-self: flex-start;
-        font-size: 15px;
+        border-radius: 8px;
         max-width: 80%;
+        font-size: 15px;
+        line-height: 1.5;
     }
 
-    /* Different color for messages from the user */
+    /* Different colors for sent and received messages */
     .message.me {
-        background-color: #d4eecd;
+        background-color: #dcf8c6;
         align-self: flex-end;
+        border-radius: 8px 8px 0 8px;
+    }
+
+    .message.other {
+        background-color: #ffffff;
+        align-self: flex-start;
+        border-radius: 8px 8px 8px 0;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Scroll styling for the message container */
+    #message-container {
+        scrollbar-width: thin;
+        scrollbar-color: #ccc #ffffff;
+    }
+
+    #message-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    #message-container::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    #message-container::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 4px;
     }
 
 </style>
 
-
 <body>
-    <div id="message-container"></div>
+    <div id="message-container">
+       
+    </div>
     <form id="send-container">
-        <input type="text" name="" id="message-input">
+        <input type="text" placeholder="Type a message" id="message-input">
         <button type="submit" id="send-button">Send</button>
     </form>
 </body>
