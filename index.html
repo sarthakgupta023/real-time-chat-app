@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat-app</title>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<style>
+    /* General styles */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f7f9fc;
+        color: #333;
+    }
+
+    /* Container for messages */
+    #message-container {
+        width: 100%;
+        max-width: 500px;
+        height: 400px;
+        margin-bottom: 20px;
+        padding: 10px;
+        overflow-y: auto;
+        border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Styles for the form and input elements */
+    #send-container {
+        width: 100%;
+        max-width: 500px;
+        display: flex;
+        gap: 10px;
+    }
+
+    #message-input {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #dcdcdc;
+        border-radius: 8px;
+        font-size: 16px;
+        box-sizing: border-box;
+        background-color: #f2f4f8;
+    }
+
+    #send-button {
+        padding: 10px 16px;
+        background-color: #4a90e2;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    #send-button:hover {
+        background-color: #357abd;
+    }
+
+    /* Styling individual messages */
+    .message {
+        padding: 8px 12px;
+        margin: 4px 0;
+        border-radius: 6px;
+        background-color: #e8f4ff;
+        align-self: flex-start;
+        font-size: 15px;
+        max-width: 80%;
+    }
+
+    /* Different color for messages from the user */
+    .message.me {
+        background-color: #d4eecd;
+        align-self: flex-end;
+    }
+
+</style>
+
+
+<body>
+    <div id="message-container"></div>
+    <form id="send-container">
+        <input type="text" name="" id="message-input">
+        <button type="submit" id="send-button">Send</button>
+    </form>
+</body>
+</html>
